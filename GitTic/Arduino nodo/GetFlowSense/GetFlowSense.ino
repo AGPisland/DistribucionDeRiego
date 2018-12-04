@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
-#include <Adafruit_INA219.h>
+//#include <Adafruit_INA219.h>
 
 
 
@@ -15,8 +15,8 @@ float FLUJO[2];
 bool EstadoValvula = false;
 int Valvula = 5;
 
-Adafruit_INA219 ina219;
-float ENERGIA[5];
+//Adafruit_INA219 ina219;
+//float ENERGIA[5];
 
 
 SoftwareSerial ESP32(10, 11);
@@ -68,9 +68,9 @@ void setup()
     t0 = millis();
     Serial.println("FLUJO CARGADO");
 
-    uint32_t currentFrequency;
-    ina219.begin();
-    Serial.println("INA219 CARGADO");
+    //uint32_t currentFrequency;
+    //ina219.begin();
+    //Serial.println("INA219 CARGADO");
 
   //  Serial.println("PRUEBA DE PROGRAMA");
   //  delay(3000);
@@ -89,7 +89,7 @@ void setup()
 
 void loop()
 {
-    GetPower();
+    //GetPower();
     //delay(100);
     //GetSensorFlow();
     //noInterrupts();
@@ -118,7 +118,7 @@ void GetSensorFlow()
     delay(500);
   
 }
-
+/*
 void GetPower() 
 {
   ENERGIA[0] = ina219.getShuntVoltage_mV();
@@ -131,7 +131,7 @@ void GetPower()
   Serial.println(RpsEsp32PW);
   delay(500);
 }
-
+*/
 
 void ReciboDeMensaje()
 {

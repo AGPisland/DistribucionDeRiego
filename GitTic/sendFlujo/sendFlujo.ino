@@ -72,8 +72,6 @@ void loop(){
   String Vol=String (volumen);
   String Caudal=String (caudal_L_m);
   Caudal_Vol=Vol+"/" +Caudal+"/"+String(Voltage)+"/"+String(Voltagee);
-  
   delay (1000);
-  
-  EnviarMensaje(String(NumPulsos));
+  EnviarMensaje(Caudal_Vol);
 }

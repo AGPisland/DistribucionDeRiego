@@ -2,7 +2,9 @@
 volatile long NumPulsos;
 int SensorFlujo=2;
 long dt = 0;                    //variación de tiempo por cada bucle
-long t0 = 0;   
+long t0 = 0;
+float factor=6.827;   
+float volumen=0;
 SoftwareSerial ESP32(10, 11);
 String RpsEsp32HE="";
 void interrupt(){
@@ -55,9 +57,23 @@ void EnviarMensaje(String msg)
           }
     }
 }
+int Voltage=1;
+int Voltagee=2;
 void loop(){
   Serial.print("Numero de Pulsos= ");
   Serial.println(NumPulsos);
+  volumen=0;
+  float frecuencia=ObtenerFrecuecia();
+  float caudal_L_m=frecuencia/factor;
+  dt=millis()-t0;
+  t0=millis();
+  volumen=volumen+(caudal_L_m/60)*(dt/1000);
+  String Caudal_Vol="";
+  String Vol=String (volumen);
+  String Caudal=String (caudal_L_m);
+  Caudal_Vol=Vol+"/" +Caudal+"/"+String(Voltage)+"/"+String(Voltagee);
+  
   delay (1000);
+  
   EnviarMensaje(String(NumPulsos));
 }
